@@ -1,0 +1,39 @@
+
+# ROLE TABLE
+
+insert into roles (name) values ('NORMAL_USER');
+insert into roles (name) values ('ADMIN_USER');
+
+# USER TABLE
+
+Password Mapping
+
+"mypassword" -> 
+$2a$12$ncVKTp7LOrPWiHqyEDginOO/4o4abR9rvbYbv5nX1wejkjMWHdAfm
+
+"javafsd" -> 
+
+$2a$12$vRl2/tMcwdmSvN5whfiWdelqFgwxBCMh5LB6zJ9jW/WDHuqbbXxt.
+
+
+
+insert into users (username, password) values (
+'varun', '$2a$12$vRl2/tMcwdmSvN5whfiWdelqFgwxBCMh5LB6zJ9jW/WDHuqbbXxt.');
+
+
+insert into users (user_id, username, password) values (
+'sanjay', '$2a$12$vRl2/tMcwdmSvN5whfiWdelqFgwxBCMh5LB6zJ9jW/WDHuqbbXxt.');
+
+
+# USERS_ROLES TABLE
+
+insert into users_roles (user_id, role_id) values (
+(select user_id from users where username = 'varun'),
+(select role_id from roles where name = 'ADMIN_USER')
+);
+
+
+insert into users_roles (user_id, role_id) values (
+(select user_id from users where username = 'sanjay'),
+(select role_id from roles where name = 'NORMAL_USER')
+);
